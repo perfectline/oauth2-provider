@@ -34,7 +34,7 @@ module Songkick
           false
         end
 
-        def response_body
+        def response_json
           return jsonize(ERROR, ERROR_DESCRIPTION) unless valid?
           update_authorization
 
@@ -48,6 +48,10 @@ module Songkick
           end
 
           JSON.unparse(response)
+        end
+
+        def response_body
+          JSON.unparse(response_json)
         end
 
         def response_headers
